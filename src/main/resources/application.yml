@@ -1,0 +1,32 @@
+
+spring:
+  application:
+    name: batch-library
+  output:
+    ansi:
+      enabled: always
+  batch:
+#    job:
+#      name: ${job.name:NONE}
+    repository:
+      isolationlevelforcreate: ISOLATION_READ_COMMITTED
+    jdbc:
+      initialize-schema: never
+  mybatis:
+    common:
+      config: classpath:mybatis/config/mybatis-config.xml
+      mapper: classpath*:mybatis/sql/**/*.xml
+      executorType: BATCH
+  main:
+    web-application-type: NONE
+
+logging:
+  level:
+    root: info
+    jdbc:
+      sqlonly: off
+      sqltiming: error
+      audit: error
+      resultset: off
+      resultsettable: debug
+      connection: error

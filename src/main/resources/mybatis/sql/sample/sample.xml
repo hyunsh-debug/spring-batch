@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.batch.sample.mapper.SampleMapper">
+	<select id="selectItems" resultType="kr.co.batch.sample.dvo.ReadDvo">
+		SELECT
+			READ_TEST_ID
+			, NAME
+			, CREATE_TIME
+			, MODIFY_TIME
+		FROM
+			BATCH_READ_TEST
+		ORDER BY
+			READ_TEST_ID ASC
+	</select>
+	
+	<update id="updateItems">
+		UPDATE 
+			BATCH_READ_TEST
+		SET
+			NAME = #{name}
+			, MODIFY_TIME = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')
+		WHERE
+			READ_TEST_ID = #{readTestId}
+	</update>
+</mapper>
